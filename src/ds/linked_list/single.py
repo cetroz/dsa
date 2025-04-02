@@ -19,13 +19,11 @@ class SingleLinkedList:
 
     def delete_start(self):
         if not self.head:
-            print("The list is empty, nothing to delete.")
             return
         self.head = self.head.next
 
     def delete_end(self):
         if not self.head:
-            print("The list is empty, nothing to delete.")
             return
         elif not self.head.next:
             self.head = None
