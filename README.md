@@ -11,11 +11,11 @@ src/
         queue/
         ...
     algs/
-        djikstra/
+        dijkstra/
         bfs/
         ...
 ```
 
 All the data structure and algorithm code is present in `src/ds` and `src/algs` respectively.
 
-Documentation is in progress for the usage of each data structure and algorithm alongwith a TL;DR-style expalanation.
+Documentation on usage and explanation about each data structure and algorithm is in progress.
