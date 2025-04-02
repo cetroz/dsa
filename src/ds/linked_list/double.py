@@ -72,10 +72,8 @@ class DoubleLinkedList:
         start = self.head
         while start:
             if start.data == key:
-                print("Element is found")
                 return True
             start = start.next
-        print("Element not found")
         return False
 
     def reverse(self):
@@ -89,7 +87,7 @@ class DoubleLinkedList:
             curr.prev = next
             prev = curr
             curr = next
-        
+
         self.head = prev
 
     def print_start(self):

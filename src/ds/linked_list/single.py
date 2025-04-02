@@ -49,7 +49,6 @@ class SingleLinkedList:
             start = start.next
 
         if not start:
-            print("Element not found")
             return
 
         prev.next = start.next
@@ -68,10 +67,8 @@ class SingleLinkedList:
         start = self.head
         while start:
             if start.data == key:
-                print("Element is found")
                 return True
             start = start.next
-        print("Element not found")
         return False
 
     def print_items(self):
