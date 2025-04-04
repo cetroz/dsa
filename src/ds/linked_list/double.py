@@ -3,7 +3,7 @@ class DoubleLinkedList:
         self.head = None
         self.tail = None
 
-    def insert_start(self, data: int):
+    def insert_start(self, data):
         node = DoubleNode(data)
         if not self.head:
             self.head = node
@@ -14,7 +14,7 @@ class DoubleLinkedList:
         self.head.prev = node
         self.head = node
 
-    def insert_end(self, data: int):
+    def insert_end(self, data):
         node = DoubleNode(data)
         if not self.head:
             self.head = node
@@ -42,7 +42,7 @@ class DoubleLinkedList:
             self.head = None
             self.tail = None
 
-    def delete_any(self, key: int):
+    def delete_any(self, key):
         start = self.head
         end = self.tail
 
@@ -68,8 +68,18 @@ class DoubleLinkedList:
                     start.prev.next = start.next
             start = start.next
 
-    def search(self, key: int) -> bool:
+    def search(self, key):
         start = self.head
+
+        if not start:
+            return
+        
+        if self.head.data == key:
+            return True
+
+        if self.tail.data == key:
+            return True
+
         while start:
             if start.data == key:
                 return True
@@ -77,6 +87,12 @@ class DoubleLinkedList:
         return False
 
     def reverse(self):
+        if not self.head:
+            return
+
+        if self.head.next is None:
+            return
+
         curr = self.head
         prev = None
         self.head = self.tail
@@ -90,18 +106,11 @@ class DoubleLinkedList:
 
         self.head = prev
 
-    def print_start(self):
+    def print_items(self):
         start = self.head
         while start:
             print(start.data, end="" if start.next else "\n")
             start = start.next
-
-    def print_end(self):
-        start = self.tail
-        while start:
-            print(start.data, end="" if start.prev else "\n")
-            start = start.prev
-
 
 class DoubleNode:
     def __init__(self, data):

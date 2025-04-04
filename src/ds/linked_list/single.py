@@ -2,12 +2,12 @@ class SingleLinkedList:
     def __init__(self):
         self.head = None
 
-    def insert_start(self, data: int):
+    def insert_start(self, data):
         node = SingleNode(data)
         node.next = self.head
         self.head = node
 
-    def insert_end(self, data: int):
+    def insert_end(self, data):
         node = SingleNode(data)
         if not self.head:
             self.head = node
@@ -34,7 +34,7 @@ class SingleLinkedList:
             last = last.next
         last.next = None
 
-    def delete_any(self, key: int):
+    def delete_any(self, key):
         start = self.head
         prev = None
 
@@ -52,6 +52,12 @@ class SingleLinkedList:
         prev.next = start.next
 
     def reverse(self):
+        if not self.head:
+            return
+
+        if self.head.next is None:
+            return
+
         curr = self.head
         prev = None
         while curr:
@@ -61,7 +67,7 @@ class SingleLinkedList:
             curr = next
         self.head = prev
 
-    def search(self, key: int) -> bool:
+    def search(self, key):
         start = self.head
         while start:
             if start.data == key:
