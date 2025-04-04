@@ -17,5 +17,3 @@ src/
 ```
 
 All the data structure and algorithm code is present in `src/ds` and `src/algs` respectively.
-
-Documentation on usage and explanation about each data structure and algorithm is in progress.
