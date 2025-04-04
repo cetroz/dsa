@@ -11,7 +11,7 @@ class CircularDoubleLinkedList:
             node.next = node
             node.prev = node
             return
-        
+
         self.tail.next = node
         node.prev = self.tail
 
@@ -27,7 +27,7 @@ class CircularDoubleLinkedList:
             node.next = node
             node.prev = node
             return
-        
+
         self.tail.next = node
         node.prev = self.tail
         node.next = self.head
@@ -61,7 +61,7 @@ class CircularDoubleLinkedList:
 
         if start is None:
             return
-        
+
         if start == end:
             self.head = self.tail = None
 
@@ -85,16 +85,16 @@ class CircularDoubleLinkedList:
 
     def search(self, key):
         start = self.head
-        
+
         if not self.head:
             return False
-        
+
         if self.head.data == key:
             return True
-        
+
         if self.tail.data == key:
             return True
-        
+
         while start.next != self.head:
             if start.data == key:
                 return True
@@ -123,7 +123,7 @@ class CircularDoubleLinkedList:
     def print_items(self):
         start = self.head
         while start:
-            print(start.data, end='')
+            print(start.data, end="")
             start = start.next
             if start is self.head:
                 break
@@ -134,6 +134,7 @@ class CircularDoubleNode:
         self.data = data
         self.prev = None
         self.next = None
+
 
 if __name__ == "__main__":
     llist = CircularDoubleLinkedList()

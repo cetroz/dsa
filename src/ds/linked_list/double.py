@@ -73,7 +73,7 @@ class DoubleLinkedList:
 
         if not start:
             return
-        
+
         if self.head.data == key:
             return True
 
@@ -111,6 +111,7 @@ class DoubleLinkedList:
         while start:
             print(start.data, end="" if start.next else "\n")
             start = start.next
+
 
 class DoubleNode:
     def __init__(self, data):
