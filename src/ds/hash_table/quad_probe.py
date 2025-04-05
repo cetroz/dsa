@@ -3,6 +3,9 @@ class HashTable:
         self.size = size
         self.table = [None] * size
 
+    def load_factor(self):
+        return sum(1 for item in self.table if item is not None) / self.size
+
     def get_hash(self, key):
         return hash(key) % self.size
 
@@ -16,34 +19,36 @@ class HashTable:
                 self.insert(item[0], item[1])
 
     def insert(self, key, val):
-        if self.load() > 0.7:
+        if self.load_factor() > 0.7:
             self.resize()
 
         hash_index = self.get_hash(key)
-        if not self.table[hash_index] or self.table[hash_index][0] == key:
+        if self.table[hash_index] and self.table[hash_index][0] == key:
             self.table[hash_index] = (key, val)
             return
-
-        original_index = hash_index
-        while self.table[hash_index] is not None:
-            hash_index = (hash_index + 1) % self.size
-            if original_index == hash_index:
-                self.resize()
-                return self.insert(key, val)
-        self.table[hash_index] = (key, val)
+        elif not self.table[hash_index]:
+            self.table[hash_index] = (key, val)
+            return
+        else:
+            original_index = hash_index
+            i = 1
+            while self.table[hash_index] is not None:
+                hash_index = (hash_index + i**2) % self.size
+                i += 1
+                if original_index == hash_index:
+                    self.resize()
+                    return self.insert(key, val)
+            self.table[hash_index] = (key, val)
 
     def get(self, key):
         hash_index = self.get_hash(key)
         original_index = hash_index
-
+        i = 1
         while self.table[hash_index] is not None:
             if self.table[hash_index][0] == key:
                 return self.table[hash_index][1]
-            hash_index = (hash_index + 1) % self.size
+            hash_index = (hash_index + i**2) % self.size
+            i += 1
             if original_index == hash_index:
                 break
-
         return None
-
-    def load_factor(self):
-        return sum(1 for item in self.table if item is not None) / self.size
